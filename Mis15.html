@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XV Aidin de la Rosa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Great+Vibes&family=Montserrat:wght@300;600&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --celeste: #D0E7F5;
+            --celeste-medio: #A9D1E6;
+            --oro: #C5A059;
+            --blanco: #FFFFFF;
+            --negro: #2C2C2C;
+            --crema: #FCFAF7;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--celeste);
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            font-family: 'Montserrat', sans-serif;
+            color: var(--negro);
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 480px;
+            background: var(--crema);
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+            margin: 10px auto;
+        }
+
+        .header {
+            padding: 40px 15px 10px;
+            text-align: center;
+            background: linear-gradient(to bottom, var(--celeste), var(--crema));
+        }
+
+        .name {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 12vw, 4rem);
+            color: var(--oro);
+            margin: 10px 0;
+            line-height: 1.1;
+        }
+
+        .event-type {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+        }
+
+        /* CUENTA REGRESIVA */
+        .countdown-container {
+            padding: 20px 10px;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-box {
+            background: var(--blanco);
+            border: 1px solid var(--oro);
+            border-radius: 8px;
+            flex: 1;
+            min-width: 60px;
+            max-width: 80px;
+            padding: 10px 2px;
+            text-align: center;
+        }
+
+        .countdown-number {
+            display: block;
+            font-family: 'Special Elite', cursive;
+            font-size: 1.3rem;
+            color: var(--oro);
+        }
+
+        .countdown-label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            color: var(--celeste-medio);
+        }
+
+        .personal-message {
+            padding: 20px 30px;
+            text-align: center;
+        }
+
+        .personal-message p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* CARRUSEL OPTIMIZADO PARA 6 IMÁGENES */
+        .photo-section {
+            padding: 0 15px;
+            margin-bottom: 30px;
+        }
+
+        .slider {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            max-height: 450px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 6px solid var(--blanco);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .slides {
+            display: flex;
+            width: 600%; /* 100% * 6 imágenes */
+            height: 100%;
+            /* Tiempo ajustado a 18s (aprox 3s por foto) */
+            animation: slideShow6 18s infinite ease-in-out; 
+        }
+
+        .slides img {
+            width: 16.666%; /* 100% / 6 imágenes */
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Nueva animación calculada para 6 fotos */
+        @keyframes slideShow6 {
+            0%, 13.33% { transform: translateX(0); } /* Foto 1 */
+            16.66%, 29.99% { transform: translateX(-16.666%); } /* Foto 2 */
+            33.33%, 46.66% { transform: translateX(-33.332%); } /* Foto 3 */
+            49.99%, 63.32% { transform: translateX(-49.998%); } /* Foto 4 */
+            66.66%, 79.99% { transform: translateX(-66.664%); } /* Foto 5 */
+            83.33%, 96.66% { transform: translateX(-83.33%); } /* Foto 6 */
+            100% { transform: translateX(0); } /* Vuelve al inicio */
+        }
+
+        .details {
+            padding: 0 20px 40px;
+            text-align: center;
+        }
+
+        .info-block {
+            margin-bottom: 25px;
+        }
+
+        .btn-location {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 12px 25px;
+            background: var(--negro);
+            color: var(--blanco);
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            width: 80%;
+        }
+
+        .dress-code {
+            background: var(--blanco);
+            border: 1px solid var(--celeste);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 15px;
+        }
+
+        .color-palette {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .dot {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid #eee;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2rem;
+            color: var(--oro);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="header">
+            <h1 class="name">Aidin <br> de la Rosa</h1>
+            <p class="event-type">Mis Quince Años</p>
+        </div>
+
+        <div class="countdown-container" id="countdown">
+            <div class="countdown-box"><span class="countdown-number" id="days">00</span><span class="countdown-label">Días</span></div>
+            <div class="countdown-box"><span class="countdown-number" id="hours">00</span><span class="countdown-label">Hrs</span></div>
+            <div class="countdown-box"><span class="countdown-number" id="minutes">00</span><span class="countdown-label">Min</span></div>
+            <div class="countdown-box"><span class="countdown-number" id="seconds">00</span><span class="countdown-label">Seg</span></div>
+        </div>
+
+        <div class="personal-message">
+            <p>
+                "Hay momentos en la vida que se vuelven inolvidables cuando se comparten con las personas que más queremos. 
+                Hoy celebro mis quince años y me encantaría que fueras parte de esta noche llena de magia y alegría."
+            </p>
+        </div>
+
+        <div class="photo-section">
+            <div class="slider">
+                <div class="slides">
+                    <img src="img15/ella.jpeg" alt="Foto Aidin 1">
+                    <img src="img15/img2.jpeg" alt="Foto Aidin 2">
+                    <img src="img15/img3.jpeg" alt="Foto Aidin 3">
+                    <img src="img15/img4.jpeg" alt="Foto Aidin 4">
+                    <img src="img15/img5.jpeg" alt="Foto Aidin 5">
+                    <img src="img15/img8.jpeg" alt="Foto Aidin 6">
+                </div>
+            </div>
+        </div>
+
+        <div class="details">
+            <div class="info-block">
+                <p style="font-family: 'Special Elite'; font-size: 0.9rem; color: var(--oro);">CUÁNDO Y DÓNDE</p>
+                <p style="font-weight: 600; margin: 5px 0;">Mayo 23, 2026 | 5:30 PM</p>
+                <p><strong>Mi Ranchito</strong></p>
+                <p style="font-size: 0.85rem; color: #666;">7701 Elam Rd, Dallas Tx 75217</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=7701+Elam+Rd,+Dallas,+TX+75217" target="_blank" class="btn-location">ABRIR MAPA</a>
+            </div>
+
+            <div class="info-block">
+                <p style="font-family: 'Special Elite'; font-size: 0.9rem; color: var(--oro);">PROGRAMA</p>
+                <p>Cena: 6:00 PM - 9:00 PM</p>
+                <p>Baile: 9:00 PM - 1:00 AM</p>
+            </div>
+
+            <div class="dress-code">
+                <p style="font-family: 'Special Elite'; font-size: 0.8rem;">DRESS CODE</p>
+                <p style="font-size: 0.95rem; margin: 5px 0;">Vaquero Formal</p>
+                <div class="color-palette">
+                    <div class="dot" style="background-color: var(--celeste-medio);"></div>
+                    <div class="dot" style="background-color: var(--oro);"></div>
+                    <div class="dot" style="background-color: #ffffff;"></div>
+                    <div class="dot" style="background-color: #1a1a1a;"></div>
+                </div>
+            </div>
+
+            <div class="footer">¡Los Esperamos!</div>
+        </div>
+    </div>
+
+    <script>
+        // Configuración de la cuenta regresiva para el 23 de Mayo de 2026 a las 5:30 PM
+        const targetDate = new Date("May 23, 2026 17:30:00").getTime();
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "<h3 style='color:var(--oro); font-family:Special Elite; text-align:center; width:100%;'>¡ES HOY! 🤠</h3>";
+                clearInterval(interval);
+                return;
+            }
+            
+            document.getElementById("days").innerText = String(Math.floor(distance / 86400000)).padStart(2, '0');
+            document.getElementById("hours").innerText = String(Math.floor((distance % 86400000) / 3600000)).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(Math.floor((distance % 3600000) / 60000)).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(Math.floor((distance % 60000) / 1000)).padStart(2, '0');
+        }
+
+        updateCountdown(); // Ejecutar una vez al inicio
+        const interval = setInterval(updateCountdown, 1000); // Actualizar cada segundo
+    </script>
+</body>
+</html>
